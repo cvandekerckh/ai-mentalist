@@ -10,7 +10,7 @@ dependencies = [
     "openai>=1.0",
     "faiss-cpu>=1.9,<1.10",
     "pytesseract>=0.3",
-    "pdf2image>=1.17",
+    "pymupdf>=1.24",
     "streamlit>=1.40",
     "python-dotenv>=1.0",
 ]

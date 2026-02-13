@@ -1,19 +1,23 @@
-import os
 from pathlib import Path
 
+import fitz  # pymupdf
 import pytesseract
-from pdf2image import convert_from_path
+from PIL import Image
 from langchain_core.documents import Document
 
 
 def extract_text_from_pdf(pdf_path: str) -> str:
-    """Convert a scanned PDF to text using pdf2image + pytesseract OCR."""
-    images = convert_from_path(pdf_path, dpi=300)
+    """Convert a scanned PDF to text using pymupdf + pytesseract OCR."""
+    doc = fitz.open(pdf_path)
     pages = []
-    for i, image in enumerate(images, start=1):
-        text = pytesseract.image_to_string(image)
+    for i, page in enumerate(doc, start=1):
+        # Render page at 300 DPI
+        pix = page.get_pixmap(dpi=300)
+        img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+        text = pytesseract.image_to_string(img)
         pages.append(text)
-        print(f"  OCR page {i}/{len(images)}")
+        print(f"  OCR page {i}/{len(doc)}")
+    doc.close()
     return "\n\n".join(pages)
 
 

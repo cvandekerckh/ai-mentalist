@@ -11,7 +11,7 @@ OpenAI API + LangChain + FAISS + pytesseract (OCR) + Streamlit
 Install system dependencies (macOS):
 
 ```bash
-brew install poppler tesseract
+brew install tesseract
 ```
 
 Install Python dependencies:
