@@ -21,6 +21,7 @@ dependencies = [
     { name = "pytesseract" },
     { name = "python-dotenv" },
     { name = "streamlit" },
+    { name = "tqdm" },
 ]
 
 [package.metadata]
@@ -34,6 +35,7 @@ requires-dist = [
     { name = "pytesseract", specifier = ">=0.3" },
     { name = "python-dotenv", specifier = ">=1.0" },
     { name = "streamlit", specifier = ">=1.40" },
+    { name = "tqdm", specifier = ">=4.60" },
 ]
 
 [[package]]
